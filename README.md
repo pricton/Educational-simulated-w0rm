@@ -1,27 +1,41 @@
+# 🧪 Educational Worm Simulation – Self-Replication Demo (C++)
 
-# 🧪 Educational Malware Sample: Network/Email Worm in C++
+> ⚠️ This project is for **educational and research purposes only**.  
+> It simulates the behavior of a self-replicating program in a safe, controlled, and non-malicious way.
 
-⚠️ **DISCLAIMER**  
-This source code is provided **strictly for educational and research purposes only**.  
-It is intended for:
-- Security researchers
-- Students of computer science or cybersecurity
-- Malware analysis practice in controlled, isolated environments
+---
 
-### ⚠️ Do Not Use in Real Environments
-This code must **never be compiled or executed** on production systems or networks.  
-Doing so may violate laws in your jurisdiction.
+## 📄 Description
 
-### 🧠 Educational Purpose
-The purpose of this project is to:
-- Demonstrate how classic worms propagate via email and network shares
-- Provide insight into how attackers exploit weak passwords and outdated systems
-- Support security training, malware reverse engineering, and ethical hacking
+This program demonstrates a basic simulation of worm-like behavior: **self-replication**.  
+It copies its own executable under a **randomized new filename** (e.g., `copy_x8kz4v.exe`) within the same directory.
 
-### 🔐 Safety Notice
-- This is not a fully working malware sample
-- Dangerous functions (e.g. file copying, password attacks, payload delivery) are **disabled or commented out**
-- Do **not compile or execute** this code unless inside a **safe, air-gapped virtual machine**
+🚫 **Note:**  
+- No network activity  
+- No payload or harm  
+- No persistence  
+- No spreading beyond the local directory
 
-### 📜 License
-MIT License (for educational use only — no warranty, no liability)
+The goal is to help students and researchers understand how basic self-replicating logic works — safely and ethically.
+
+---
+
+## 🔧 How It Works
+
+### Main Components:
+- `generateRandomName()`  
+  Creates a randomized filename using lowercase letters and digits (e.g. `copy_1a2b3c.exe`).
+
+- `replicateSelf()`  
+  Reads the current executable path using `/proc/self/exe` (Linux only), and copies the file under a new random name in the same directory.
+
+- `main()`  
+  Launches the replication simulation and prints status messages.
+
+---
+
+## ✅ Example Output
+
+```bash
+mini-worm started.
+copy created: copy_k4z3g9.exe
