@@ -3,6 +3,8 @@
 #include <filesystem>
 #include <random>
 #include <chrono>
+#include <vector>
+#include <thread>
 
 namespace fs = std::filesystem;
 
@@ -39,8 +41,35 @@ void replicateSelf() {
 
 	}
 }
+void scanForTargets(std::vector<std::string>& targets) {
+	std::cout << "[Simulated] Scanning local network for targets...\n";
+	std::this_thread::sleep_for(std::chrono::seconds(1)); // Simulate delay
+
+	// Simulated list of "found" targets
+	targets = { "192.168.1.101", "192.168.1.102", "192.168.1.103" };
+}
+
+void simulateRemoteCopy(const std::string& ip) {
+	std::cout << "[Simulated] Copying worm to " << ip << "...\n";
+	std::this_thread::sleep_for(std::chrono::milliseconds(800));
+	std::cout << "[Simulated] Execution triggered on " << ip << "\n";
+}
+
+void simulateNetworkReplication() {
+	std::vector<std::string> targets;
+	scanForTargets(targets);
+
+	for (const auto& ip : targets) {
+		simulateRemoteCopy(ip);
+	}
+
+	std::cout << "[Simulated] Network replication complete.\n";
+}
+
+
 int main() {
 	std::cout << "mini-wurm gestartet.\n";
 	replicateSelf();
+	simulateNetworkReplication();
 	return 0;
 }
